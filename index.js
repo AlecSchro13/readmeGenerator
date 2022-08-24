@@ -2,6 +2,7 @@
 const inquirer = require('inquirer');
 const fse = require('fs-extra');
 const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown');
 //const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
@@ -32,7 +33,7 @@ inquirer
         name: 'license',
         choices: ['MIT', ''],                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
     }, 
-  ])
+  ]);
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
@@ -49,9 +50,9 @@ function init() {
     inquirer.prompt(questions)
     .then(function (userinput) {
         console.log(userinput)
-
-    })
-}
+        writeToFile('README.md', generateMarkdown(userinput));
+    });
+};
 
 // Function call to initialize app
 init();
