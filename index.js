@@ -1,4 +1,4 @@
-// TODO: Include packages needed for this application
+// TODO: Include packages needed for this application;
 const inquirer = require('inquirer');
 const fse = require('fs-extra');
 const fs = require('fs');
@@ -9,13 +9,16 @@ inquirer
   .prompt([
     {
         type: 'input',
-        name: 'name',
-        message: 'What is your name?',
-    },
-    {
-        type: 'input',
         message: 'What is the title of your repository?',
         name: 'title',
+        validate: your_Input => {
+            if (your_Input) {
+                return true;
+            } else {
+                console.log('Enter A Title!');
+                return false;
+            }
+        }
     },
     {
         type: 'input',
@@ -26,8 +29,8 @@ inquirer
         type: 'checkbox',
         message: 'What license will you be using for you repository?',
         name: 'license',
-        choices: ['']
-    },
+        choices: ['MIT', ''],                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    }, 
   ])
 
 // TODO: Create a function to write README file
