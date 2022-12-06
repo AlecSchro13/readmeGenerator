@@ -44,7 +44,7 @@ const questions = [
                 console.log("");
                 return false;
             }
-        }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+        }
     },
     {
         type: 'input',
@@ -59,14 +59,11 @@ const questions = [
             }
         }
     },
-    {
-
-    },
-  ];
+];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeToFile(fileName, data, (err) => {
+    fs.writeFile(fileName, data, (err) => {
         if (err) {
             return console.log(err);
         }
@@ -77,10 +74,10 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions)
-    .then(function (userinput) {
-        console.log(userinput)
-        writeToFile('README.md', generateMarkdown(userinput));
-    });
+        .then(function (userinput) {
+            console.log(userinput)
+            writeToFile('README.md', generateMarkdown(userinput));
+        });
 };
 
 // Function call to initialize app
